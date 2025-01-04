@@ -38,33 +38,6 @@ void FanController::init() {
     // We have to enable the ports as outputs before PWM will work.
     pinMode(12, OUTPUT);
 
-    /*
-    TCNT4 = 0;
-
-    TCCR4A = 0;
-    TCCR4B = 0;
-    TCCR4C = 0;
-
-    // ------------- 25 kHz PWM and fan PWM pin definition -------------
-    TCCR4A = (1 << COM4B1) | (1 << COM4C1) | (1 << WGM41) | (1 << WGM40); // 16.11.1 TCCR1A – Timer/Counter1 Control Register A
-    TCCR4B = (1 << WGM43) | (1 << WGM42) | (1 << CS41);  // prescaler = 8
-    OCR4AH = 0;
-    OCR4AL = OCRCompareValue;  // 79 results in a 25kHz pwm signal
-
-    OCR4BH = 0;
-    OCR4BL = 0;
-
-    OCR4CH = 0;
-    OCR4CL = 0;
-
-    TCNT4H = 0; //set to avoid problems with the output compare -> 16.7.3 Using the Output Compare Unit
-    TCNT4L = 0;
-
-    // We have to enable the ports as outputs before PWM will work.
-    pinMode(7, OUTPUT);
-    pinMode(8, OUTPUT);
-    */
-
     // ------------- FAN speeds -------------
     rpmCalculationTime = millis();
     digitalWrite(fan1RpmInterruptPin, HIGH);
