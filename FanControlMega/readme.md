@@ -23,9 +23,10 @@ This firmware is written for an Arduino Mega.
 * https://github.com/olikraus/u8g2 Library to draw on the LCD screen
 * https://github.com/PaulStoffregen/Encoder Library to handle the rotary encoder wheel
 * https://github.com/adafruit/Adafruit_NeoPixel Library to handle the leds (display background light and wheel accent lights)
+
 Please see section "Library Licenses" for the license information of each library.
 
-## Resources:
+## Additional Resources:
 * https://www.bjonnh.net/article/20221126_mini_12864/ description how to use the MINI12864 V2.0 LCD-Display with an Arduino
 * https://wolles-elektronikkiste.de/timer-und-pwm-teil-2-16-bit-timer1 Article how Arduino timers can be manipulated
 * http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf ATmega data sheet
@@ -36,6 +37,7 @@ As a display the MINI12864 V2.0 LCD-Display like e.g. https://biqu.equipment/de/
 As a controller board I also wanted to use an Arduino Uno I already had, but as the Uno only has two interrupt pins and I wanted to display the speed of three fans I used an Arduino Mega instead. The Mega has 6 interrupt pins, so 3 are used for the fans and the other three for the rotary wheel and button. As fans I used three Noctua NF-A6x25 5V fans. These fans do not draw much power, so all components can be powered by a single usb-c connection.
 
 ## Wiring / Schematics:
+![Image of teh wiring of the project](https://github.com/Akio-42/techProjects/blob/main/FanControlMega/wiring.png?raw=true)
 
 ## 25 kHz PWM Signal with an Arduino Mega
 To get a 25 kHz PWM Signal from an Arduino we have to jump through some hoops. Normally the Arduino has a frequency of 490 Hz for its PWM pins. The Noctua fans do run with a 490 Hz PWM Signal, but it is outside of their specification. And I found that when used that way the Noctua fans don't produce a speed signal that can be measured. The interrupt bound to to speed signal seemed to be triggered randomly. When operated With a 25 kHz PWM signal, the speed signal triggered the interrupt just fine.
@@ -63,21 +65,7 @@ To achieve this we can modify the Timer1 of the ATmega2560. Timer1 is controllin
 ## Please note:
 This project and all code I wrote are provided as-is and are intended for educational purposes only. While this information is meant to guide and inspire other makers, there is no guarantee that the code is error-free or suitable for every situation. I am not responsible for any damage or issues that arise from simply copying and pasting the provided code without proper understanding or modification. Always review and test code thoroughly before using it in your own projects.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 # Library Licenses
 ## olikraus / u8g2 - https://github.com/olikraus/u8g2
