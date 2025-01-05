@@ -1,8 +1,5 @@
 #include <Arduino.h>
 
-int rpmCount;
-unsigned int timeIntervalStart;
-
 void setup() {
   // ------------- 25 kHz PWM and fan PWM pin definition -------------
   // Clear registers from any values
